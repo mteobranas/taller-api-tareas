@@ -1,0 +1,25 @@
+### Trae todas las tareas
+GET http://localhost:3000/tareas
+
+### Trae la tarea por ID
+GET http://localhost:3000/tareas/4
+
+
+### Añadir una tarea
+POST http://localhost:3000/tareas
+Content-Type: application/json
+
+{
+  "titulo": "Hacer el entregable de JAP"
+}
+
+### Actualizar tarea (completar)
+PATCH http://localhost:3000/tareas/6
+Content-Type: application/json
+
+{
+  "completado": "true"
+}
+
+### Eliminar tarea
+DELETE http://localhost:3000/tareas/4
