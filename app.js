@@ -18,8 +18,10 @@ app.get('/tareas', async (req, res) => {
   let conn
   try {
     conn = await pool.getConnection()
+    // Realizo la consulta a la base de datos
     const rows = await conn.query('SELECT id, titulo, completado FROM tareas')
 
+    // Finalizo y entrego una respuesta al usuario
     res.json(rows)
   } catch (error) {
     console.error(error)
@@ -34,10 +36,12 @@ app.get('/tareas/:id', async (req, res) => {
   let conn
   try {
     conn = await pool.getConnection()
+    // Realizo la consulta a la base de datos
     const rows = await conn.query(
       'SELECT id, titulo, completado FROM tareas WHERE id = ?',
       [req.params.id]
     )
+    // Finalizo y entrego una respuesta al usuario
     res.json(rows)
   } catch (error) {
     console.error(error)
@@ -52,9 +56,12 @@ app.post('/tareas', async (req, res) => {
   let conn
   try {
     conn = await pool.getConnection()
+    // Realizo la consulta a la base de datos
     const result = await conn.query('INSERT INTO tareas(titulo) VALUES (?)', [
       req.body.titulo,
     ])
+
+    // Finalizo y entrego una respuesta al usuario
     res.send('Tarea insertada')
   } catch (error) {
     console.error(error)
@@ -69,10 +76,13 @@ app.patch('/tareas/:id', async (req, res) => {
   let conn
   try {
     conn = await pool.getConnection()
+    // Realizo la consulta a la base de datos
     const result = await conn.query(
       `UPDATE tareas SET completado=? WHERE id=?`,
       [req.body.completado, req.params.id]
-  );
+    )
+
+    // Finalizo y entrego una respuesta al usuario
     res.send('Tarea actualizada')
   } catch (error) {
     console.error(error)
@@ -87,7 +97,12 @@ app.delete('/tareas/:id', async (req, res) => {
   let conn
   try {
     conn = await pool.getConnection()
-    const result = await conn.query(`DELETE FROM tareas WHERE id=?`, [req.params.id])
+    // Realizo la consulta a la base de datos
+    const result = await conn.query(`DELETE FROM tareas WHERE id=?`, [
+      req.params.id,
+    ])
+
+    // Finalizo y entrego una respuesta al usuario
     res.send('Tarea eliminada')
   } catch (error) {
     console.error(error)

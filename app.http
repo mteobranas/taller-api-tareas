@@ -14,7 +14,7 @@ Content-Type: application/json
 }
 
 ### Actualizar tarea (completar)
-PATCH http://localhost:3000/tareas/6
+PATCH http://localhost:3000/tareas/4
 Content-Type: application/json
 
 {
@@ -22,4 +22,4 @@ Content-Type: application/json
 }
 
 ### Eliminar tarea
-DELETE http://localhost:3000/tareas/4
+DELETE http://localhost:3000/tareas/5
